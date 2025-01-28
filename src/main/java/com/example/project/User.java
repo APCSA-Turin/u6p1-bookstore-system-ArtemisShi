@@ -9,6 +9,9 @@ private Book[] book=new Book[5];
     public User(String na, String ID){
         name=na;
         Id=ID;
+        for(int i=0; i<book.length;i++){
+            book[i]=null;
+        }
     }
  
     //getter and setters
@@ -38,19 +41,21 @@ private Book[] book=new Book[5];
 
     // public String bookListInfo(){} //returns a booklist for the user, if empty, output "empty"
     public String bookListInfo(){
-        if(book==null){
-            return "empty";
-        }
         String out="";
         for(Book b: book){
+            if(b!=null){
             out+=b.bookInfo()+"\n";
         }
+        else{
+            out+="empty\n";
+        }
+    }
         return out;
     }
 
     // public String userInfo(){} //returns  "Name: []\nID: []\nBooks:\n[]"
     public String userInfo(){
-        return "Name: " +name+ "\nID: "+Id+"\nBooks:\n"+bookListInfo();
+        return "Name: " +name+ "\nId: "+Id+"\nBooks: \n"+bookListInfo();
     }
        
 }
